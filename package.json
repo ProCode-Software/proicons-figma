@@ -6,7 +6,7 @@
     "type": "module",
     "scripts": {
         "build": "vite build",
-        "dev": "vite",
+        "dev": "vite build --watch --mode=development",
         "preview": "vite preview",
         "lint": "eslint . --ext .ts,.svelte",
         "lint:fix": "eslint . --ext .ts,.svelte --fix"

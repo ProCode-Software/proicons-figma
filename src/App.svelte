@@ -8,9 +8,3 @@ const increment = () => count += 1
 
 <h1>Hello Figma</h1>
 <button onclick={increment}>Count is {count}</button>
-
-<style lang="scss">
-* {
-    font-family: system-ui;
-}
-</style>
