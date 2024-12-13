@@ -1,0 +1,30 @@
+{
+    "name": "@proicons/figma",
+    "version": "1.0.0",
+    "description": "ProIcons Figma plugin",
+    "main": "code.js",
+    "type": "module",
+    "scripts": {
+        "build": "vite build",
+        "dev": "vite",
+        "preview": "vite preview",
+        "lint": "eslint . --ext .ts,.svelte",
+        "lint:fix": "eslint . --ext .ts,.svelte --fix"
+    },
+    "author": "ProCode Software",
+    "license": "MIT",
+    "devDependencies": {
+        "@figma/eslint-plugin-figma-plugins": "latest",
+        "@figma/plugin-typings": "latest",
+        "@sveltejs/vite-plugin-svelte": "^5.0.2",
+        "@tsconfig/svelte": "^5.0.4",
+        "@typescript-eslint/eslint-plugin": "^8.18.0",
+        "@typescript-eslint/parser": "^8.18.0",
+        "eslint": "^9.16.0",
+        "eslint-plugin-svelte": "^2.46.1",
+        "svelte": "^5.12.0",
+        "tslib": "^2.8.1",
+        "typescript": "^5.7.2",
+        "vite": "^6.0.3"
+    }
+}
