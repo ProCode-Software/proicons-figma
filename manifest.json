@@ -2,7 +2,7 @@
     "name": "ProIcons",
     "id": "1449203491672377472",
     "api": "1.0.0",
-    "main": "dist/assets/index-eZCw-DB1.js",
+    "main": "dist/index.js",
     "capabilities": [],
     "enableProposedApi": false,
     "documentAccess": "dynamic-page",

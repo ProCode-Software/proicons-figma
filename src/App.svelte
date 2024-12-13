@@ -1,4 +1,5 @@
 <script lang="ts">
-
+console.log('Hello from the UI')
 </script>
-<p>Hello Figma</p>
+
+<h1>Hello Figma</h1>
