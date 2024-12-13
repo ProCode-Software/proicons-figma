@@ -4,7 +4,7 @@
     "api": "1.0.0",
     "main": "dist/index.js",
     "capabilities": [],
-    "enableProposedApi": false,
+    "enableProposedApi": true,
     "documentAccess": "dynamic-page",
     "editorType": [
         "figma",
