@@ -1,0 +1,76 @@
+:root {
+    --font-family: 'Inter V', 'Inter', system-ui, ui-sans-serif, 'Helvetica', sans-serif;
+}
+
+:root {
+    --spacer: 0.5rem;
+    --btn-height: 24px;
+    --radius-medium: .3125rem;
+    --text-body-medium-font-size: .6875rem;
+    --text-body-medium-font-weight: 450;
+    --text-body-medium-letter-spacing: .00344rem;
+    --text-body-medium-line-height: 1rem;
+    --icon-button-size: 1.5rem;
+    --icon-button-icon-size: 1.5rem;
+    --color-bghovertransparent: #0000000d;
+    --color-tooltip: #1e1e1e;
+    --elevation-300-tooltip: 0px 0px 1px rgba(0, 0, 0, .15),
+        0px 5px 12px rgba(0, 0, 0, .13),
+        0px 1px 3px rgba(0, 0, 0, .1);
+}
+
+.figma-dark {
+    --color-bghovertransparent: #ffffff0d;
+}
+
+::placeholder {
+    color: var(--figma-color-text-secondary);
+    font-weight: 450;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+    font-size: 16px;
+    color: var(--figma-color-text);
+    background: var(--figma-color-bg);
+    margin: 0;
+}
+
+svg {
+    display: inline-flex;
+    flex-shrink: 0;
+}
+
+input,
+button {
+    font: inherit;
+    color: inherit;
+    outline: none;
+}
+button:focus-visible {
+    outline: 1px solid var(--figma-color-border-selected);
+}
+
+.group {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    height: 40px;
+    padding-inline: .5rem;
+
+    &.border {
+        border-bottom: 1px solid var(--figma-color-border);
+    }
+    &.spaced {
+        justify-content: space-between;
+        gap: 4px;
+    }
+}
+
+::selection {
+    background: var(--figma-color-bg-onselected);
+}

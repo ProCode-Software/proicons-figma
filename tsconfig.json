@@ -15,6 +15,7 @@
         "checkJs": true,
         "isolatedModules": true,
         "moduleDetection": "force",
+        "noImplicitAny": false,
         "typeRoots": [
             "./node_modules/@types",
             "./node_modules/@figma"
