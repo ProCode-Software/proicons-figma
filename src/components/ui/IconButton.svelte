@@ -13,7 +13,7 @@ let parent: HTMLElement | undefined = $state()
         {@html icon}
     {:else if icon}
         {@const Icon = icon}
-        <Icon size={20} />
+        <Icon size={20} strokeWidth={1.2} />
     {/if}
 </button>
 

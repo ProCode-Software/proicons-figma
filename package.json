@@ -16,7 +16,7 @@
     "devDependencies": {
         "@figma/eslint-plugin-figma-plugins": "latest",
         "@figma/plugin-typings": "latest",
-        "@proicons/svelte": "link:../proicons/packages/proicons-svelte",
+        "@proicons/svelte": "^4.11.2",
         "@sveltejs/vite-plugin-svelte": "^5.0.2",
         "@tsconfig/svelte": "^5.0.4",
         "@typescript-eslint/eslint-plugin": "^8.18.0",

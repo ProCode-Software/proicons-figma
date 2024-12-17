@@ -1,12 +1,10 @@
-import { objectEntries } from './polyfill'
-
 export function mergeClasses(...classes: any[]): { class: string } {
     return { class: classes.filter(Boolean).join(' ') }
 }
 
 export function mergeCss(styles: Record<string, any>, addUnits = true) {
     return {
-        style: objectEntries(styles)
+        style: Object.entries(styles)
             .filter(([, v]) => v !== undefined && !isNaN(v))
             .map(([k, v]) => [
                 k,

@@ -3,6 +3,8 @@ import { mergeCss } from '../../lib/mergeClasses'
 
 const { label, parent }: { label?: string; parent: HTMLElement } = $props()
 let isShown = $state(false)
+let tooltip = $state<HTMLDivElement | null>(null),
+    tooltipWidth = $state(0)
 
 function initParent(p: HTMLElement) {
     p.onmouseenter = () => (isShown = true)
@@ -16,11 +18,17 @@ function initParent(p: HTMLElement) {
     {@const { x, y, width, height } = initParent(parent)}
     <div
         class="FigmaTooltip"
-        hidden={!isShown}
+        bind:this={tooltip}
+        bind:clientWidth={tooltipWidth}
         {...mergeCss({
             top: y + height + 7,
-            left: Math.min(x + width, window.innerWidth),
+            left: Math.min(
+                x + width,
+                window.innerWidth - 10 - tooltipWidth / 2
+            ),
+            '--tooltip-pos': '100%'
         })}
+        hidden={!isShown}
     >
         {label}
     </div>
@@ -41,17 +49,17 @@ function initParent(p: HTMLElement) {
 
     &::before {
         content: '';
-        width: 0;
-        height: 0;
+        width: 0px;
+        height: 0px;
         display: block;
         margin: 0 -1px;
         position: absolute;
         border: 7px solid transparent;
-        top: 0;
-        left: 50%;
-        transform: translateX(-50%);
+        bottom: 100%;
+        left: var(--tooltip-pos);
+        transform: translateX(-var(--tooltip-pos));
         border-top: none;
-        border-bottom: var(--color-tooltip);
+        border-bottom-color: var(--color-tooltip);
     }
 }
 </style>
