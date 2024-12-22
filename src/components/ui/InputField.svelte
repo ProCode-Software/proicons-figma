@@ -9,10 +9,12 @@ interface Props {
     icon?: string | Component
     placeholder?: string
     value?: string
+    iconSize?: number
 }
 let {
     type = 'text',
     icon,
+    iconSize = 18,
     placeholder,
     value = $bindable(''),
 }: Props = $props()
@@ -23,7 +25,7 @@ let {
         {@html icon}
     {:else if icon}
         {@const Icon = icon}
-        <Icon size={18} />
+        <Icon size={iconSize} />
     {/if}
     <input {type} {placeholder} bind:value />
     {#if value.length > 0}

@@ -1,9 +1,10 @@
 <script>
+import IconsList from "../components/icons/IconsList.svelte"
 import SearchBar from '../components/icons/SearchBar.svelte'
 
-let query = $state('')
 </script>
 
 <div class="IconsPage">
-    <SearchBar bind:value={query} />
+    <SearchBar />
+    <IconsList />
 </div>

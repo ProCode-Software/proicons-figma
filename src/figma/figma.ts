@@ -1,11 +1,8 @@
+// Show the UI
+figma.showUI(__html__, { height: 100, width: 200, title: 'ProIcons', themeColors: true });
+
 // Runs this code if the plugin is run in Figma
 if (figma.editorType === 'figma') {
-    // This plugin will open a window to prompt the user to enter a number, and
-    // it will then create that many rectangles on the screen.
-
-    // This shows the HTML page in "ui.html".
-    figma.showUI(__html__, { height: 100, width: 200, title: 'ProIcons', themeColors: true });
-
     // Calls to "parent.postMessage" from within the HTML page will trigger this
     // callback. The callback will be passed the "pluginMessage" property of the
     // posted message.

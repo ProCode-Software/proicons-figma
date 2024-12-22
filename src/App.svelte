@@ -3,14 +3,8 @@ import TabStrip from './components/ui/TabStrip.svelte'
 import IconsPage from './layouts/IconsPage.svelte'
 import OptionsPage from './layouts/OptionsPage.svelte'
 
-console.log('Hello from the UI')
-
-let count = $state(0)
 let currentPage = $state(0)
-
 const pages = [IconsPage, OptionsPage]
-
-const increment = () => (count += 1)
 
 const changePage = (index: number) => {
     currentPage = index
@@ -34,11 +28,22 @@ const Page = $derived(pages[currentPage])
     </div>
     <Page />
 </div>
-<h1>Hello Figma</h1>
-<button onclick={increment}>Count is {count}</button>
 
 <style lang="scss" global>
 .root {
     font-size: var(--text-body-medium-font-size);
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    max-height: 100vh;
+    max-width: 100vw;
+    overflow: hidden;
+}
+.root > :global([class$='Page']) {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
 }
 </style>

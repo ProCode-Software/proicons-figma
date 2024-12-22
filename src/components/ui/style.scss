@@ -13,6 +13,8 @@
     --icon-button-size: 1.5rem;
     --icon-button-icon-size: 1.5rem;
     --color-bghovertransparent: #0000000d;
+    --btn-border: #0000001a;
+    --scrollbar-bg: #0000001d;
     --color-tooltip: #1e1e1e;
     --elevation-300-tooltip: 0px 0px 1px rgba(0, 0, 0, .15),
         0px 5px 12px rgba(0, 0, 0, .13),
@@ -21,6 +23,8 @@
 
 .figma-dark {
     --color-bghovertransparent: #ffffff0d;
+    --btn-border: #ffffff1a;
+    --scrollbar-bg: #ffffff1d;
 }
 
 ::placeholder {
@@ -38,6 +42,9 @@ body {
     color: var(--figma-color-text);
     background: var(--figma-color-bg);
     margin: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
 }
 
 svg {
@@ -73,4 +80,48 @@ button:focus-visible {
 
 ::selection {
     background: var(--figma-color-bg-onselected);
+}
+
+.centered {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    place-items: center;
+    padding-block: 10vh;
+}
+
+.heading {
+    font-weight: 600;
+    font-size: 1.3em;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    position: absolute;
+}
+::-webkit-scrollbar-track {
+    background: none;
+
+    &:hover {
+        border: 1px solid var(--figma-color-border);
+    }
+}
+::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-bg);
+    border-radius: 100px;
+    border: 1px solid var(--figma-color-border);
+}
+
+.tooltipDivider {
+    width: 100%;
+    margin-left: -0.5rem;
+    position: absolute;
+    border-top: 1px solid #ffffff30;
+    margin-top: 4px;
+}
+
+a {
+    font: inherit;
+    text-decoration: inherit;
+    color: inherit;
 }

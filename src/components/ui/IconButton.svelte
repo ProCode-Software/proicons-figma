@@ -1,19 +1,49 @@
 <script lang="ts">
-import type { Component } from 'svelte'
+import type { Component, Snippet } from 'svelte'
 import Tooltip from './Tooltip.svelte'
+import { mergeClasses } from '../../lib/mergeClasses'
 
-const { icon, label }: { icon: string | Component; label?: string } = $props()
+let {
+    icon,
+    label,
+    iconSize = 20,
+    onclick,
+    children,
+    toggle = false,
+    value = $bindable(false)
+}: {
+    icon: string | Component
+    label?: string
+    iconSize?: number
+    onclick?: Function
+    children?: Snippet
+    toggle?: boolean,
+    value?: boolean
+} = $props()
 
 let parent: HTMLElement | undefined = $state()
+
+function buttonClick() {
+    if (toggle) {
+        value = !value
+    }
+    onclick?.()
+}
 </script>
 
-<button class="FigmaIconBtn" aria-label={label} bind:this={parent}>
+<button
+    {...mergeClasses('FigmaIconBtn', value && 'active')}
+    aria-label={label}
+    bind:this={parent}
+    onclick={buttonClick}
+>
     <Tooltip {label} {parent} />
+    {@render children?.()}
     {#if typeof icon == 'string'}
         {@html icon}
     {:else if icon}
         {@const Icon = icon}
-        <Icon size={20} strokeWidth={1.2} />
+        <Icon size={iconSize} strokeWidth={1.2} />
     {/if}
 </button>
 
@@ -29,6 +59,14 @@ let parent: HTMLElement | undefined = $state()
 
     &:hover {
         background: var(--color-bghovertransparent);
+    }
+    &.active {
+        background: var(--figma-color-bg-selected);
+        color: var(--figma-color-icon-brand);
+
+        &:hover {
+            background: var(--figma-color-bg-selected-secondary);
+        }
     }
 }
 </style>

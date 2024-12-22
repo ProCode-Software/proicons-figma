@@ -1,22 +1,21 @@
 <script>
-import SearchIcon from '@proicons/svelte/SearchIcon'
-import IconButton from '../ui/IconButton.svelte'
-import FolderIcon from '@proicons/svelte/FolderIcon'
-
-let { value = $bindable('') } = $props()
+import CategoriesButton from './CategoriesButton.svelte'
+import SearchIcon from '../ui/icons/SearchIcon.svelte'
+import { writable } from 'svelte/store'
+import { query } from '../../lib/stores'
 </script>
 
 <div class="group spaced border">
     <div class="styledInputField">
-        <SearchIcon size={18} />
+        <SearchIcon />
         <input
             type="search"
             class="inp"
-            bind:value
+            bind:value={$query}
             placeholder="Search icons"
         />
     </div>
-    <IconButton icon={FolderIcon} label="Categories" />
+    <CategoriesButton />
 </div>
 
 <style lang="scss">
@@ -24,7 +23,7 @@ let { value = $bindable('') } = $props()
     display: flex;
     width: 100%;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
     padding-left: 0.25rem;
 }
 .inp {
