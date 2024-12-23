@@ -9,6 +9,7 @@ let {
     iconSize = 20,
     onclick,
     children,
+    className,
     toggle = false,
     value = $bindable(false)
 }: {
@@ -18,7 +19,8 @@ let {
     onclick?: Function
     children?: Snippet
     toggle?: boolean,
-    value?: boolean
+    value?: boolean,
+    className?: string
 } = $props()
 
 let parent: HTMLElement | undefined = $state()
@@ -32,7 +34,7 @@ function buttonClick() {
 </script>
 
 <button
-    {...mergeClasses('FigmaIconBtn', value && 'active')}
+    {...mergeClasses('FigmaIconBtn', value && 'active', className)}
     aria-label={label}
     bind:this={parent}
     onclick={buttonClick}

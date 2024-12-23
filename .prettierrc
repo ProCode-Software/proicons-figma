@@ -7,5 +7,7 @@
     "printWidth": 80,
     "svelteIndentScriptAndStyle": false,
     "semi": false,
-    "singleQuote": true
+    "singleQuote": true,
+    "bracketSameLine": true,
+    "svelteBracketNewLine": false
 }

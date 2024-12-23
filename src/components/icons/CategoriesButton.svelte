@@ -43,10 +43,14 @@ function categorySelectionChange() {
     <div bind:this={parent}>
         <IconButton
             icon={FolderIcon}
-            label="Categories"
+            label="Categories{$selectedCategories.length
+                ? ` (${$selectedCategories.length} selected)`
+                : ''}"
             iconSize={24}
+            onclick={() => isShown = !isShown}
+            className={$selectedCategories.length > 0 ? 'active' : ''}
             toggle
-            bind:value={isShown}
+            value={isShown}
         />
         <Menu
             items={$categorySelection}

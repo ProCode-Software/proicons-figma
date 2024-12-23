@@ -2,13 +2,13 @@
 import type { Component } from 'svelte'
 import CancelIcon from '@proicons/svelte/CancelIcon'
 
-type InputType = 'text' | 'color' | 'number'
+type InputType = 'text' | 'color' | 'number' | 'checkbox'
 
 interface Props {
     type?: InputType
     icon?: string | Component
     placeholder?: string
-    value?: string
+    value?: string | number
     iconSize?: number
 }
 let {
@@ -16,7 +16,7 @@ let {
     icon,
     iconSize = 18,
     placeholder,
-    value = $bindable(''),
+    value = $bindable(),
 }: Props = $props()
 </script>
 
@@ -28,7 +28,7 @@ let {
         <Icon size={iconSize} />
     {/if}
     <input {type} {placeholder} bind:value />
-    {#if value.length > 0}
+    {#if value?.toString().length > 0}
         <button
             class="cancelButton"
             onclick={() => (value = '')}
