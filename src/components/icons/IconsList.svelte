@@ -4,7 +4,9 @@ import { sendMessage } from '../../lib/messages'
 import Button from '../ui/Button.svelte'
 import IconItem from './IconItem.svelte'
 import { searchIcons } from '../../lib/search'
-import { icons, query } from '../../lib/stores'
+import { icons, query, selectedCategories } from '../../lib/stores'
+import { formatList } from '../../lib/utils'
+
 const iconsUrl =
     'https://raw.githubusercontent.com/ProCode-Software/proicons/main/icons/icons.json'
 
@@ -15,7 +17,12 @@ let sortedIcons = $derived(
 )
 
 let filteredIcons = $derived(
-    $query ? searchIcons(sortedIcons, $query) : sortedIcons
+    ($query ? searchIcons(sortedIcons, $query) : sortedIcons).filter(
+        ([, { category }]) =>
+            $selectedCategories.length > 0
+                ? $selectedCategories.includes(category)
+                : true
+    )
 )
 
 async function fetchIcons() {
@@ -25,12 +32,22 @@ async function fetchIcons() {
             error = false
         })
         .catch(() => {
-            sendMessage('FetchIconsError')
+            sendMessage({ type: 'FetchIconsError' })
             error = true
         })
 }
+function formatNoResults(q: string, c: string[]) {
+    return [
+        `No results found for "${q}"`,
+        ...(c.length > 0
+            ? [
+                  `with ${c.length > 1 ? 'categories' : 'category'} "${formatList(c)}"`,
+              ]
+            : []),
+    ].join(' ')
+}
 onmessage = ({ data: { pluginMessage } }) => {
-    if (pluginMessage == 'FetchIconsTryAgain') fetchIcons()
+    if (pluginMessage.type == 'FetchIconsTryAgain') fetchIcons()
 }
 onMount(fetchIcons)
 </script>
@@ -51,14 +68,16 @@ onMount(fetchIcons)
             />
         {:else}
             <div class="centered NoResults">
-                <div class="heading">No results found for "{$query}"</div>
+                <div class="heading">
+                    {formatNoResults($query, $selectedCategories)}
+                </div>
                 <p>Please check your search query and try again</p>
                 <Button text="Clear search" onclick={() => ($query = '')} />
-                    <!-- TODO: replace with figma.openExternal() -->
                 <a
                     href="https://github.com/ProCode-Software/proicons/discussions/new?category=icon-requests&title={encodeURIComponent(
                         `[Icon Request]: ${$query}`
                     )}"
+                    target="_blank"
                     aria-label="Request icon on GitHub"
                     style="margin-top: 6px;"
                 >

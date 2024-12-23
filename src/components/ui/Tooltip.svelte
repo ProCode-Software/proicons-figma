@@ -4,7 +4,7 @@ import { mergeCss } from '../../lib/mergeClasses'
 const { label, parent }: { label?: string; parent: HTMLElement } = $props()
 let isShown = $state(false)
 
-let rect: DOMRect = $state()
+let rect: DOMRect | undefined = $state()
 let isHovered = false
 let tooltip = $state<HTMLDivElement | null>(null),
     tooltipWidth = $state(0)
@@ -64,7 +64,7 @@ $effect(() => {
     box-shadow: var(--elevation-300-tooltip, 0 2px 7px rgba(0, 0, 0, 0.15));
     line-height: var(--text-body-medium-line-height);
     letter-spacing: var(--text-body-medium-letter-spacing);
-    z-index: 14;
+    z-index: 16;
     border-radius: var(--radius-medium);
     max-width: 80vw;
     transform: translateX(-50%);
