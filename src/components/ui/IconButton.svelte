@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { Component, Snippet } from 'svelte'
-import Tooltip from './Tooltip.svelte'
 import { mergeClasses } from '../../lib/mergeClasses'
+import Tooltip from './Tooltip.svelte'
 
 let {
     icon,

@@ -24,6 +24,9 @@ const categorySelection = derivedStore(categories, $categories => {
 })
 
 function categorySelectionChange() {
+    if (!selectedItems.length) {
+        selectedItems.push(0)
+    }
     if (selectedItems.some(i => i !== 0)) {
         selectedItems = selectedItems.filter(i => i !== 0)
 

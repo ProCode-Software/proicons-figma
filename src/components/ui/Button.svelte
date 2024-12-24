@@ -48,6 +48,8 @@ let parent: HTMLElement | undefined = $state()
     place-items: center;
     border: 1px solid var(--btn-border);
     background: none;
+    text-align: center;
+    justify-content: center;
 
     &:focus {
         background: var(--figma-color-bg-hover);

@@ -32,20 +32,24 @@ figma.ui.onmessage = (msg: any) => {
     } else if (msg.type == 'AddIcon') {
         const iconNode = createIcon(msg.svg as string, msg.name)
         figma.currentPage.selection = [iconNode]
+        figma.commitUndo()
     }
 }
 // @ts-ignore
 figma.on('drop', (e: DropEvent) => {
     const { files, node, dropMetadata: { name }, x, y } = e
     if (files.length > 0 && files[0].type === 'image/svg+xml') {
-        files[0].getTextAsync().then(svg => {
-            const iconNode = createIcon(svg, name, x, y)
+        figma.currentPage.loadAsync().then(() => { // async causes syntax error
+            files[0].getTextAsync().then(svg => {
+                const iconNode = createIcon(svg, name, x, y)
 
-            if ('appendChild' in node && node.type !== 'DOCUMENT') {
-                node.appendChild(iconNode)
-            }
-            figma.currentPage.selection = [iconNode]
-
+                if ('appendChild' in node && node.type !== 'DOCUMENT') {
+                    figma.currentPage.loadAsync()
+                    node.appendChild(iconNode)
+                }
+                figma.currentPage.selection = [iconNode]
+                figma.commitUndo()
+            })
         })
         return false
     }
