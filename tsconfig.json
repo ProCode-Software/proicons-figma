@@ -22,7 +22,6 @@
             "./node_modules/@figma"
         ],
         "types": [
-            "vite/client",
             "svelte",
             "@figma/plugin-typings"
         ]

@@ -1,4 +1,3 @@
-import { type Component } from "svelte"
 
 export interface Icon {
     description: string
@@ -6,3 +5,5 @@ export interface Icon {
     category: string
 }
 export type IconsFile = Record<string, Icon>
+
+export type IconObject = Icon & { name: string }

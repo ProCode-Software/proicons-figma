@@ -1,12 +1,10 @@
 <script lang="ts">
 import type { Component } from 'svelte'
 import type { HTMLInputAttributes } from 'svelte/elements'
-import { mergeClasses } from '../../lib/mergeClasses'
-import Toggle from '../ui/Toggle.svelte'
-import InputField from '../ui/InputField.svelte'
-import Tooltip from '../ui/Tooltip.svelte'
 import IconButton from '../ui/IconButton.svelte'
 import InfoIcon from '../ui/icons/InfoIcon.svelte'
+import InputField from '../ui/InputField.svelte'
+import Toggle from '../ui/Toggle.svelte'
 
 let {
     layout = 'vertical',
@@ -15,7 +13,7 @@ let {
     value = $bindable(),
     icon,
     description,
-    ...props
+    ...inputProps
 }: {
     layout?: 'vertical' | 'horizontal'
     type?: 'text' | 'number' | 'color' | 'checkbox'
@@ -23,10 +21,11 @@ let {
     value: any
     icon?: string | Component
     description?: string
+    placeholder?: string | undefined
 } & HTMLInputAttributes = $props()
 </script>
 
-<div {...mergeClasses('setting', layout)}>
+<div class={['setting', layout]}>
     {#if layout == 'horizontal'}
         <div class="label">
             <span>{label}</span>
@@ -34,7 +33,7 @@ let {
                 <IconButton label={description} icon={InfoIcon} />
             {/if}
         </div>
-        <InputField {...props} {type} {icon} bind:value />
+        <InputField {...inputProps} {type} {icon} bind:value />
     {:else}
         {#if typeof icon == 'string'}
             {@html icon}

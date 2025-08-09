@@ -1,6 +1,5 @@
 <script lang="ts">
 import type { Component, Snippet } from 'svelte'
-import { mergeClasses } from '../../lib/mergeClasses'
 import Tooltip from './Tooltip.svelte'
 
 let {
@@ -11,15 +10,15 @@ let {
     children,
     className,
     toggle = false,
-    value = $bindable(false)
+    value = $bindable(false),
 }: {
     icon: string | Component
     label?: string
     iconSize?: number
     onclick?: Function
     children?: Snippet
-    toggle?: boolean,
-    value?: boolean,
+    toggle?: boolean
+    value?: boolean
     className?: string
 } = $props()
 
@@ -34,11 +33,10 @@ function buttonClick() {
 </script>
 
 <button
-    {...mergeClasses('FigmaIconBtn', value && 'active', className)}
+    class={['FigmaIconBtn', className, { active: value }]}
     aria-label={label}
     bind:this={parent}
-    onclick={buttonClick}
->
+    onclick={buttonClick}>
     <Tooltip {label} {parent} />
     {@render children?.()}
     {#if typeof icon == 'string'}

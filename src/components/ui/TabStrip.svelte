@@ -1,5 +1,4 @@
 <script lang="ts">
-import { mergeClasses } from "../../lib/mergeClasses"
 interface TabItem {
     label: string
     default?: boolean
@@ -19,12 +18,8 @@ function selectTabItem(index: number) {
 <div class="FigmaTabStrip">
     {#each items as item, i}
         <button
-            {...mergeClasses(
-                "FigmaTabStripItem",
-                selectedTabItem == i && "active"
-            )}
-            onclick={() => selectTabItem(i)}
-        >
+            class={['FigmaTabStripItem', { active: selectedTabItem == i }]}
+            onclick={() => selectTabItem(i)}>
             {item.label}
         </button>
     {/each}
@@ -34,7 +29,7 @@ function selectTabItem(index: number) {
 .FigmaTabStrip {
     display: flex;
     align-items: center;
-    gap: .5rem;
+    gap: 0.5rem;
 
     .FigmaTabStripItem {
         line-height: var(--text-body-medium-line-height);
@@ -45,7 +40,7 @@ function selectTabItem(index: number) {
         background: none;
         border: none;
         height: 1.5rem;
-        padding: 0 .5rem;
+        padding: 0 0.5rem;
 
         &:not(.active):hover {
             background: var(--figma-color-bg-hover);

@@ -2,7 +2,6 @@
 import CancelIcon from '@proicons/svelte/CancelIcon'
 import type { Component } from 'svelte'
 import type { HTMLInputAttributes } from 'svelte/elements'
-import { mergeClasses, mergeCss } from '../../lib/mergeClasses'
 
 type InputType = 'text' | 'color' | 'number' | 'checkbox' | 'search'
 
@@ -22,7 +21,7 @@ let {
     ...props
 }: Props & HTMLInputAttributes = $props()
 
-let picker = $state()
+let picker = $state<HTMLInputElement | null>(null)
 </script>
 
 {#if type !== 'color'}
@@ -44,7 +43,7 @@ let picker = $state()
         {/if}
     </div>
 {:else}
-    <div {...mergeClasses('FigmaInput', 'ColorInput')}>
+    <div class="FigmaInput ColorInput">
         <button
             class="colorPreview"
             aria-label="Change color"

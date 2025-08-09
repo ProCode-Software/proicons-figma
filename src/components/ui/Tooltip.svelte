@@ -1,5 +1,4 @@
 <script lang="ts">
-import { mergeCss } from '../../lib/mergeClasses'
 
 const { label, parent }: { label?: string; parent: HTMLElement } = $props()
 let isShown = $state(false)
@@ -36,19 +35,19 @@ $effect(() => {
     <div
         class="tooltipTriangle"
         hidden={!isShown}
-        {...mergeCss({
+        style={{
             left: x + (width / 2),
             top: y + height,
-        })}
+        }}
     ></div>
     <div
         class="FigmaTooltip"
         bind:this={tooltip}
         bind:clientWidth={tooltipWidth}
-        {...mergeCss({
+        style={{
             top: y + height + 6,
             left: tooltipX,
-        })}
+        }}
         hidden={!isShown}
     >
         {@html label}

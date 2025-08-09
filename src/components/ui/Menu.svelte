@@ -1,7 +1,5 @@
 <script lang="ts">
-//@ts-nocheck
 import { onMount, type Component } from 'svelte'
-import { mergeCss } from '../../lib/mergeClasses'
 import CheckmarkIcon from './icons/CheckmarkIcon.svelte'
 
 type MenuItem =
@@ -73,11 +71,10 @@ onMount(() => {
         hidden={!open}
         bind:this={menu}
         bind:clientWidth={menuWidth}
-        {...mergeCss({
+        style={{
             left: menuX,
             top: y + height,
-        })}
-    >
+        }}>
         {#each items as item, i}
             {#if item.separator != true}
                 <button class="DropdownItem" onclick={() => itemClick(i)}>

@@ -1,29 +1,18 @@
 <script lang="ts">
 import { onMount } from 'svelte'
 import { sendMessage } from '../../lib/messages'
+import { searchIcons } from '../../lib/search'
+import { iconEntries, icons, query, selectedCategories } from '../../lib/stores'
+import { formatList } from '../../lib/utils'
 import Button from '../ui/Button.svelte'
 import IconItem from './IconItem.svelte'
-import { searchIcons } from '../../lib/search'
-import { icons, query, selectedCategories } from '../../lib/stores'
-import { formatList } from '../../lib/utils'
 
 const iconsUrl =
     'https://raw.githubusercontent.com/ProCode-Software/proicons/main/icons/icons.json'
 
 let error = $state(false)
 
-let sortedIcons = $derived(
-    Object.entries($icons).sort((a, b) => a[0].localeCompare(b[0]))
-)
-
-let filteredIcons = $derived(
-    ($query ? searchIcons(sortedIcons, $query) : sortedIcons).filter(
-        ([, { category }]) =>
-            $selectedCategories.length > 0
-                ? $selectedCategories.includes(category)
-                : true
-    )
-)
+let filteredIcons = $derived($query != '' ? searchIcons($query) : $iconEntries)
 
 async function fetchIcons() {
     fetch(iconsUrl)
@@ -31,7 +20,8 @@ async function fetchIcons() {
             $icons = await res.json()
             error = false
         })
-        .catch(() => {
+        .catch(e => {
+            console.error('[ProIcons] Failed to fetch icons:', e)
             sendMessage({ type: 'FetchIconsError' })
             error = true
         })
@@ -60,11 +50,11 @@ onMount(fetchIcons)
     </div>
 {:else if $icons}
     <div class="IconList">
-        {#each filteredIcons as [iconName, data]}
+        {#each filteredIcons as {name, category, icon}}
             <IconItem
-                name={iconName}
-                category={data.category}
-                svg={data.icon}
+                name={name}
+                category={category}
+                svg={icon}
             />
         {:else}
             <div class="centered NoResults">

@@ -16,10 +16,7 @@ export function transform(
     svg: SVGSVGElement,
     customizations: Customizations
 ): SVGSVGElement {
-    let addRadius = true
-    if (customizations.$cornerRadius && customizations.$cornerRadius < 0) {
-        addRadius = false
-    }
+    let addRadius = customizations.$cornerRadius! >= 0
     
     const maps = {
         color: ['stroke', 'fill'],
