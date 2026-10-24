@@ -32,7 +32,7 @@ let parent: HTMLElement | undefined = $state()
     {text}
 </button>
 
-<style lang="scss">
+<style >
 .FigmaButton {
     font-family: var(--text-body-medium-font-family);
     font-size: var(--text-body-medium-font-size);

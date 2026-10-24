@@ -11,7 +11,7 @@
     </a>
 </div>
 
-<style lang="scss">
+<style >
 .footer {
     display: flex;
     gap: 6px;

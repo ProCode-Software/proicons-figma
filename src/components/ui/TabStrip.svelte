@@ -25,7 +25,7 @@ function selectTabItem(index: number) {
     {/each}
 </div>
 
-<style lang="scss">
+<style >
 .FigmaTabStrip {
     display: flex;
     align-items: center;

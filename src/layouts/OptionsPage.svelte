@@ -8,7 +8,7 @@ import Settings from '../components/options/Settings.svelte'
     <AboutFooter />
 </div>
 
-<style lang="scss">
+<style >
 .OptionsPage {
     overflow: auto;
 }

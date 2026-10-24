@@ -9,15 +9,15 @@ export default defineConfig({
         // Assets in Figma must be inlined
         viteSingleFile({
             useRecommendedBuildConfig: false,
-            inlinePattern: ['*ui*', '*.css']
-        })
+            inlinePattern: ['*ui*', '*.css'],
+        }),
     ],
     build: {
-        target: 'ES2015', // Figma doesn't support ?? operator
-        rollupOptions: {
+        target: 'es2020',
+        rolldownOptions: {
             input: {
                 index: './src/main.ts', // Figma
-                ui: './index.html' // UI
+                ui: './index.html', // UI
             },
             output: {
                 dir: './dist',
@@ -25,6 +25,6 @@ export default defineConfig({
                 chunkFileNames: `[name].js`,
                 assetFileNames: `[name].[ext]`,
             },
-        }
-    }
+        },
+    },
 })

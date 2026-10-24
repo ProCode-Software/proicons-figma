@@ -47,7 +47,7 @@ function buttonClick() {
     {/if}
 </button>
 
-<style lang="scss">
+<style >
 .FigmaIconBtn {
     border-radius: var(--radius-medium);
     width: 1.5rem;

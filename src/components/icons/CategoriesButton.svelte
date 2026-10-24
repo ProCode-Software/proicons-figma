@@ -7,21 +7,18 @@ import { derived as derivedStore } from 'svelte/store' // Bug with Svelte where 
 
 let parent = $state()
 let isShown = $state(false)
-let selectedItems = $state([])
+let selectedItems = $state<number[]>([])
 
 const categories = derivedStore(icons, $icons =>
     Array.from(
         new Set(Object.values($icons).map(({ category }) => category))
     ).sort()
 )
-const categorySelection = derivedStore(categories, $categories => {
-    $categories.unshift(
-        // @ts-ignore
-        { text: 'All', onclick: () => (selectedItems = [0]) },
-        { separator: true }
-    )
-    return $categories
-})
+const categorySelection = derivedStore(categories, $categories => [
+    { text: 'All', onclick: () => (selectedItems = [0]) },
+    { separator: true },
+    ...$categories.map(c => ({ text: c })),
+])
 
 function categorySelectionChange() {
     if (!selectedItems.length) {
@@ -50,11 +47,10 @@ function categorySelectionChange() {
                 ? ` (${$selectedCategories.length} selected)`
                 : ''}"
             iconSize={24}
-            onclick={() => isShown = !isShown}
+            onclick={() => (isShown = !isShown)}
             className={$selectedCategories.length > 0 ? 'active' : ''}
             toggle
-            value={isShown}
-        />
+            value={isShown} />
         <Menu
             items={$categorySelection}
             {parent}
@@ -63,7 +59,6 @@ function categorySelectionChange() {
             default={0}
             dropdown
             multi
-            change={categorySelectionChange}
-        />
+            change={categorySelectionChange} />
     </div>
 {/if}

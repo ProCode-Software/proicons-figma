@@ -53,7 +53,7 @@ let {
     {/if}
 </div>
 
-<style lang="scss">
+<style >
 .setting {
     display: flex;
     line-height: var(--text-body-medium-line-height);

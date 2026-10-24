@@ -38,7 +38,7 @@ const transformed = transform(parsedSvg, {
     {@html transformed}
 </button>
 
-<style lang="scss">
+<style >
 .IconItem {
     background: none;
     aspect-ratio: 1 / 1;

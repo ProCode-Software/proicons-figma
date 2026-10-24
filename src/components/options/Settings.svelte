@@ -81,7 +81,7 @@ import Button from '../ui/Button.svelte'
     </div>
 </div>
 
-<style lang="scss">
+<style >
 .SettingsGroup {
     width: 100%;
 }

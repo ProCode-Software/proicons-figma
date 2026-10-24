@@ -47,7 +47,7 @@ let picker = $state<HTMLInputElement | null>(null)
         <button
             class="colorPreview"
             aria-label="Change color"
-            style="--color: {value};"
+            style:--color={value}
             onclick={() => picker?.click()}>
         </button>
         <input {...props} type="color" bind:value bind:this={picker} />
@@ -55,7 +55,7 @@ let picker = $state<HTMLInputElement | null>(null)
     </div>
 {/if}
 
-<style lang="scss">
+<style >
 .FigmaInput {
     height: var(--btn-height);
     background: var(--figma-color-bg-secondary);

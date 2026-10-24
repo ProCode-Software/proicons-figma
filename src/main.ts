@@ -4,14 +4,14 @@ figma.showUI(__html__, {
     width: 300,
     height: 500,
     title: 'ProIcons',
-    themeColors: true
+    themeColors: true,
 })
 
 function createIcon(svgData: string, name: string, x?: number, y?: number) {
     const iconNode = figma.createNodeFromSvg(svgData)
     if (!x || !y) {
-        x = figma.viewport.center.x - (iconNode.width / 2)
-        y = figma.viewport.center.y - (iconNode.height / 2)
+        x = figma.viewport.center.x - iconNode.width / 2
+        y = figma.viewport.center.y - iconNode.height / 2
     }
     iconNode.x = x
     iconNode.y = y
@@ -26,8 +26,9 @@ figma.ui.onmessage = (msg: any) => {
             timeout: 5000,
             button: {
                 text: 'Try again',
-                action: () => figma.ui.postMessage({ type: 'FetchIconsTryAgain' })
-            }
+                action: () =>
+                    figma.ui.postMessage({ type: 'FetchIconsTryAgain' }),
+            },
         })
     } else if (msg.type == 'AddIcon') {
         const iconNode = createIcon(msg.svg as string, msg.name)
@@ -37,9 +38,16 @@ figma.ui.onmessage = (msg: any) => {
 }
 // @ts-ignore
 figma.on('drop', (e: DropEvent) => {
-    const { files, node, dropMetadata: { name }, x, y } = e
+    const {
+        files,
+        node,
+        dropMetadata: { name },
+        x,
+        y,
+    } = e
     if (files.length > 0 && files[0].type === 'image/svg+xml') {
-        figma.currentPage.loadAsync().then(() => { // async causes syntax error
+        figma.currentPage.loadAsync().then(() => {
+            // async causes syntax error
             files[0].getTextAsync().then(svg => {
                 const iconNode = createIcon(svg, name, x, y)
 

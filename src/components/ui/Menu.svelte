@@ -3,7 +3,6 @@ import { onMount, type Component } from 'svelte'
 import CheckmarkIcon from './icons/CheckmarkIcon.svelte'
 
 type MenuItem =
-    | string
     | { text: string; icon?: string | Component; onclick?: Function }
     | { separator: true }
 
@@ -30,7 +29,7 @@ let {
 } = $props()
 
 let menu = $state()
-let rect: DOMRect = $state()
+let rect = $state<DOMRect>()
 let menuWidth = $state(0)
 
 $effect(() => {
@@ -71,10 +70,8 @@ onMount(() => {
         hidden={!open}
         bind:this={menu}
         bind:clientWidth={menuWidth}
-        style={{
-            left: menuX,
-            top: y + height,
-        }}>
+        style:left={menuX}
+        style:top={y + height}>
         {#each items as item, i}
             {#if item.separator != true}
                 <button class="DropdownItem" onclick={() => itemClick(i)}>
@@ -91,7 +88,7 @@ onMount(() => {
                             {/if}
                         </div>
                     {/if}
-                    <span>{item.text ?? item}</span>
+                    <span>{item.text}</span>
                 </button>
             {:else}
                 <div class="DropdownSeparator"></div>
@@ -100,7 +97,7 @@ onMount(() => {
     </div>
 {/if}
 
-<style lang="scss">
+<style>
 .FigmaDropdown {
     position: absolute;
     padding: var(--spacer);

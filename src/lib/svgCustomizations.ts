@@ -17,7 +17,7 @@ export function transform(
     customizations: Customizations
 ): SVGSVGElement {
     let addRadius = customizations.$cornerRadius! >= 0
-    
+
     const maps = {
         color: ['stroke', 'fill'],
         strokeWidth: ['stroke-width'],

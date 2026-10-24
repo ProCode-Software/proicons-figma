@@ -1,10 +1,10 @@
 import { derived, writable } from 'svelte/store'
-import type { Icon, IconObject, IconsFile } from './types'
+import type { IconObject, IconsFile } from './types'
 
 // Icons page
 export const query = writable('')
 export const icons = writable<IconsFile>({})
-export const iconEntries = derived(icons, ($icons) => {
+export const iconEntries = derived(icons, $icons => {
     const list: IconObject[] = []
     for (const name in $icons) {
         const icon = $icons[name]

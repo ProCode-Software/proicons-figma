@@ -1,5 +1,4 @@
 <script lang="ts">
-
 const { label, parent }: { label?: string; parent: HTMLElement } = $props()
 let isShown = $state(false)
 
@@ -35,26 +34,21 @@ $effect(() => {
     <div
         class="tooltipTriangle"
         hidden={!isShown}
-        style={{
-            left: x + (width / 2),
-            top: y + height,
-        }}
-    ></div>
+        style:left={x + width / 2}
+        style:top={y + height}>
+    </div>
     <div
         class="FigmaTooltip"
         bind:this={tooltip}
         bind:clientWidth={tooltipWidth}
-        style={{
-            top: y + height + 6,
-            left: tooltipX,
-        }}
-        hidden={!isShown}
-    >
+        style:left={tooltipX}
+        style:top={y + height + 6}
+        hidden={!isShown}>
         {@html label}
     </div>
 {/if}
 
-<style lang="scss">
+<style>
 .FigmaTooltip {
     padding: 0.25rem 0.5rem;
     background: var(--color-tooltip);

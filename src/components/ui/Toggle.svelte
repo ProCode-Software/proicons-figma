@@ -4,7 +4,7 @@ let { value = $bindable() } = $props()
 
 <input type="checkbox" bind:checked={value} />
 
-<style lang="scss">
+<style >
 input {
     appearance: none;
     -webkit-appearance: none;

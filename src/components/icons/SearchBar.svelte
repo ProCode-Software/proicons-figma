@@ -18,7 +18,7 @@ import { query } from '../../lib/stores'
     <CategoriesButton />
 </div>
 
-<style lang="scss">
+<style >
 .styledInputField {
     display: flex;
     width: 100%;

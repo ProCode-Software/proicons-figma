@@ -29,7 +29,7 @@ const Page = $derived(pages[currentPage])
     <Page />
 </div>
 
-<style lang="scss" global>
+<style  global>
 .root {
     font-size: var(--text-body-medium-font-size);
     width: 100vw;

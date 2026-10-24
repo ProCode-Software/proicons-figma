@@ -6,14 +6,9 @@
     "capabilities": [],
     "enableProposedApi": true,
     "documentAccess": "dynamic-page",
-    "editorType": [
-        "figma",
-        "figjam"
-    ],
+    "editorType": ["figma", "figjam"],
     "ui": "dist/index.html",
     "networkAccess": {
-        "allowedDomains": [
-            "https://raw.githubusercontent.com"
-        ]
+        "allowedDomains": ["https://raw.githubusercontent.com"]
     }
 }

@@ -17,7 +17,7 @@ const minisearch = new MiniSearch<IconObject>({
     },
 })
 
-iconEntries.subscribe((icons) => {
+iconEntries.subscribe(icons => {
     minisearch.removeAll()
     minisearch.addAll(icons)
 })
