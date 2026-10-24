@@ -50,7 +50,7 @@ onMount(fetchIcons)
     </div>
 {:else if $icons}
     <div class="IconList">
-        {#each filteredIcons as {name, category, icon}}
+        {#each filteredIcons as {name, category, icon} (name)}
             <IconItem
                 name={name}
                 category={category}
@@ -78,7 +78,7 @@ onMount(fetchIcons)
     </div>
 {/if}
 
-<style lang="scss">
+<style >
 .IconList:not(:has(.NoResults)) {
     width: 100%;
     display: grid;
