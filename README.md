@@ -1,7 +1,6 @@
 # ProIcons Figma Plugin
 
 ![Figma](https://img.shields.io/badge/Figma-F24E1E?logo=figma&logoColor=white&style=for-the-badge)
-![Sass](https://img.shields.io/badge/Sass-C69?logo=sass&logoColor=fff&style=for-the-badge)
 ![Svelte](https://img.shields.io/badge/Svelte-%23f1413d.svg?logo=svelte&logoColor=white&style=for-the-badge)
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=fff&style=for-the-badge)
 ![Vite](https://img.shields.io/badge/Vite-646CFF?logo=vite&logoColor=fff&style=for-the-badge)
@@ -9,7 +8,7 @@
 > [!NOTE]
 > This plugin is still a work in progress in active development. You can still use it right now, but not all features have been completed.
 
-The official Figma plugin for the [ProIcons icon library](https://github.com/ProCode-Software/proicons). Built with [Svelte](https://svelte.dev), [Vite](https://vite.dev), Sass and TypeScript.
+The official Figma plugin for the [ProIcons icon library](https://github.com/ProCode-Software/proicons). Built with [Svelte](https://svelte.dev), [Vite](https://vite.dev) and TypeScript.
 
 <img src=".github/preview-light.png#gh-light-mode-only" alt="Preview" height="500">
 <img src=".github/preview-dark.png#gh-dark-mode-only" alt="Preview" height="500">
